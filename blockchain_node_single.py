@@ -22,8 +22,6 @@ class Blockchain(object):
     
     # membuat block baru
     def __init__(self):
-        self.nodes = set()
-
         self.chain = []
 
         self.current_transactions = []
@@ -34,11 +32,6 @@ class Blockchain(object):
             hash_of_previous_block = genesis_hash,
             nonce = self.proof_of_work(0, genesis_hash, [])
         )
-
-    def add_node(self, address):
-        parse_url = urlparse(address)
-        self.nodes.add(parse_url.netloc)
-        print(parse_url.netloc)
 
     def proof_of_work(self, index, hash_of_previous_block, transactions):
         nonce = 0
